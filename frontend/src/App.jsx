@@ -6,6 +6,7 @@ import Login from './components/Login';
 import Signup from './components/Singup';
 import Contest from './components/Contest';
 import WinnerPopup from './components/WinnerPopup';
+import SchedulePopup from './components/SchedulePopup';
 
 function App() {
     return (
@@ -18,6 +19,7 @@ function App() {
                 <Route path='/signup' element={<Signup />} />
                 <Route path='/contest' element={<Contest />} />
                 <Route path='/winnerpopup' element={<WinnerPopup />} />
+                <Route path='/sechedule' element={<SchedulePopup />} />
                 {/* Add other routes as necessary */}
             </Routes>
         
