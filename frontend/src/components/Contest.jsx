@@ -42,11 +42,21 @@ function Contest() {
         "id":8,
         "name":"Chess",
         "image":"chess.jpg"
+    },
+    {
+        "id":9,
+        "name":"Men's Volley",
+        "image":"men volley.avif"
+    },
+    {
+        "id":10,
+        "name":"Women's Volley",
+        "image":"women volley.jpg"
     }
 ];
 
   return (
-    <div>
+    <div className='mt-12'>
       <CardList items={items}/>
     </div>
   )

@@ -4,7 +4,7 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import gate from "/gate.jpg";
 import ground from "/ground.jpg";
-import hostel from "/ground.jpg";
+import hostel from "/hostel.jpg";
 import { ReactTyped } from 'react-typed'
 
 function Carousel() {

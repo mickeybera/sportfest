@@ -1,6 +1,27 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-function SchedulePopup({ schedule, onClose }) {
+function SchedulePopup({ schedule, onClose, onAddSchedule }) {
+  const [newEvent, setNewEvent] = useState({
+    date: '',
+    time: '',
+    description: '',
+  });
+
+  const handleAddSchedule = () => {
+    const { date, time, description } = newEvent;
+    if (date.trim() && time.trim() && description.trim()) {
+      onAddSchedule(newEvent); // Call parent function to add schedule
+      setNewEvent({ date: '', time: '', description: '' }); // Clear inputs
+    } else {
+      alert('Please fill in all fields');
+    }
+  };
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setNewEvent((prev) => ({ ...prev, [name]: value }));
+  };
+
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50 p-4 sm:p-6">
       <div className="bg-white dark:bg-gray-800 p-4 sm:p-6 rounded-lg shadow-lg max-w-md w-full max-h-[80vh] overflow-y-auto">
@@ -25,10 +46,44 @@ function SchedulePopup({ schedule, onClose }) {
           )}
         </ul>
 
+        {/* Add Schedule Form */}
+        <div className="space-y-2 mb-4">
+          <input
+            type="date"
+            name="date"
+            value={newEvent.date}
+            onChange={handleChange}
+            placeholder="Date"
+            className="w-full px-3 py-2 border rounded-md text-gray-800 dark:text-gray-200 bg-white dark:bg-gray-700 placeholder-gray-400 dark:placeholder-gray-400"
+          />
+          <input
+            type="time"
+            name="time"
+            value={newEvent.time}
+            onChange={handleChange}
+            placeholder="Time"
+            className="w-full px-3 py-2 border rounded-md text-gray-800 dark:text-gray-200 bg-white dark:bg-gray-700 placeholder-gray-400 dark:placeholder-gray-400"
+          />
+          <input
+            type="text"
+            name="description"
+            value={newEvent.description}
+            onChange={handleChange}
+            placeholder="Description"
+            className="w-full px-3 py-2 border rounded-md text-gray-800 dark:text-gray-200 bg-white dark:bg-gray-700 placeholder-gray-400 dark:placeholder-gray-400"
+          />
+          <button
+            onClick={handleAddSchedule}
+            className="w-full px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700 transition-all"
+          >
+            Add Schedule
+          </button>
+        </div>
+
         {/* Close Button */}
         <button
           onClick={onClose}
-          className="w-full px-4 py-2 bg-red-600 text-white rounded-md hover:bg-red-700 transition-all text-sm sm:text-base"
+          className="w-full px-4 py-2 bg-red-600 text-white rounded-md hover:bg-red-700 transition-all"
         >
           Close
         </button>
