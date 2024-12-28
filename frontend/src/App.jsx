@@ -1,5 +1,6 @@
 import React from 'react';
 import {Routes, Route } from 'react-router-dom';
+import { Toaster } from 'react-hot-toast';
 import Navbar from './components/Navbar';
 import Home from './components/Home';
 import Login from './components/Login';
@@ -22,6 +23,7 @@ function App() {
                 <Route path='/sechedule' element={<SchedulePopup />} />
                 {/* Add other routes as necessary */}
             </Routes>
+            <Toaster />
         
       </>
     );

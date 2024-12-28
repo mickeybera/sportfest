@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import toast from 'react-hot-toast';
 
 function SchedulePopup({ schedule, onClose, onAddSchedule }) {
   const [newEvent, setNewEvent] = useState({
@@ -12,8 +13,10 @@ function SchedulePopup({ schedule, onClose, onAddSchedule }) {
     if (date.trim() && time.trim() && description.trim()) {
       onAddSchedule(newEvent); // Call parent function to add schedule
       setNewEvent({ date: '', time: '', description: '' }); // Clear inputs
+      toast.success('schedule added!')
     } else {
-      alert('Please fill in all fields');
+      // alert('Please fill in all fields');
+      toast.error('Please fill in all fields! ⚠️');
     }
   };
 

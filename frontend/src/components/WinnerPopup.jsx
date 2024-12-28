@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import toast from 'react-hot-toast';
 
 function WinnerPopup({ winners, onClose, onAddWinner }) {
   const [newWinner, setNewWinner] = useState('');
@@ -7,8 +8,10 @@ function WinnerPopup({ winners, onClose, onAddWinner }) {
     if (newWinner.trim()) {
       onAddWinner(newWinner); // Call parent function to add winner
       setNewWinner(''); // Clear input field after adding
+      toast.success('✅ Winner added successfully! 🥳');
     } else {
-      alert('Please enter a winner description');
+      // alert('Please enter a winner description');
+      toast.success('⚠️ Please enter a winner description');
     }
   };
 

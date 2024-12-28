@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { IoMdClose } from 'react-icons/io';
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { app } from '../firebase'; // Import the app object
+import toast from 'react-hot-toast';
 
 function Login() {
     const [email, setEmail] = useState("");
@@ -19,11 +20,13 @@ function Login() {
                 email,
                 pass
             );
-            alert("You're successfully logged in");
+            // alert("You're successfully logged in");
+            toast.success('Successfully logged in!');
             navigate("/contest")
         } catch (err) {
             console.error(err);
-            alert(`Error: ${err.message}`);
+            // alert(`Error: ${err.message}`);
+            toast.error(`Error: ${err.message}`);
         }
     }
 
