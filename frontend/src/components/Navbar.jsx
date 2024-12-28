@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { FaSun, FaMoon, FaBars, FaTimes } from 'react-icons/fa'; // Import necessary icons
 import { Link } from 'react-router-dom';
+import { useAuth } from '../contexts/AuthContext';
 
 function Navbar() {
     const [darkMode, setDarkMode] = useState(false);
     const [menuOpen, setMenuOpen] = useState(false);
     const [isScrolled, setIsScrolled] = useState(false);
 
+    const {currentUser, signUserOut} = useAuth();
     // Toggle Dark Mode
     useEffect(() => {
         if (darkMode) {
@@ -73,13 +75,13 @@ function Navbar() {
                         {darkMode ? <FaSun /> : <FaMoon />}
                     </button>
                     {/* Login Button */}
-                    <Link to='/login'>
+                    {!currentUser ? <Link to='/login'>
                         <button 
                             className='px-4 py-2 rounded-md font-medium text-sm bg-violet-600 text-white hover:bg-violet-700'
                         >
                             Login
                         </button>
-                    </Link>
+                    </Link> : <button className='px-4 py-2 rounded-md font-medium text-sm bg-violet-600 text-white hover:bg-violet-700' onClick={signUserOut}>Sign out</button>}
                 </div>
 
                 {/* Mobile Menu Button */}
@@ -118,13 +120,13 @@ function Navbar() {
                         {darkMode ? <FaSun /> : <FaMoon />}
                     </button>
                     {/* Login Button */}
-                    <Link to='/login'>
+                    {!currentUser ? <Link to='/login'>
                         <button 
                             className='px-4 py-2 rounded-md font-medium text-sm bg-violet-600 text-white hover:bg-violet-700 mx-auto'
                         >
                             Login
                         </button>
-                    </Link>
+                    </Link> : <button className='px-4 py-2 rounded-md font-medium text-sm bg-violet-600 text-white hover:bg-violet-700 mx-auto' onClick={signUserOut}>Sign out</button>}
                 </div>
             )}
         </nav>

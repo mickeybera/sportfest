@@ -33,7 +33,8 @@ function Login() {
                 <div className="flex items-center justify-center min-h-screen bg-gray-100 dark:bg-gray-900">
                     <div className="relative card w-96 bg-white dark:bg-gray-800 shadow-xl p-6 rounded-lg">
                         <Link to={'/'}>
-                            <button
+                            <button 
+                                type='button'
                                 className="absolute top-2 right-2 text-gray-500 hover:text-gray-700 dark:text-gray-300 dark:hover:text-white"
                             >
                                 <IoMdClose size={20} />
