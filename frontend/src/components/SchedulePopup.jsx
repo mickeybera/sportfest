@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
+import { useAuth } from '../contexts/AuthContext';
 
 function SchedulePopup({ schedule, onClose, onAddSchedule }) {
+  const {currentUser} = useAuth();
   const [newEvent, setNewEvent] = useState({
     date: '',
     time: '',
@@ -47,7 +49,7 @@ function SchedulePopup({ schedule, onClose, onAddSchedule }) {
         </ul>
 
         {/* Add Schedule Form */}
-        <div className="space-y-2 mb-4">
+        {currentUser && <div className="space-y-2 mb-4">
           <input
             type="date"
             name="date"
@@ -78,7 +80,7 @@ function SchedulePopup({ schedule, onClose, onAddSchedule }) {
           >
             Add Schedule
           </button>
-        </div>
+        </div>}
 
         {/* Close Button */}
         <button
