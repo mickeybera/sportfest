@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { FaSun, FaMoon, FaBars, FaTimes } from 'react-icons/fa'; // Import necessary icons
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 
 function Navbar() {
@@ -8,7 +8,9 @@ function Navbar() {
     const [menuOpen, setMenuOpen] = useState(false);
     const [isScrolled, setIsScrolled] = useState(false);
 
-    const {currentUser, signUserOut} = useAuth();
+    const { currentUser, signUserOut } = useAuth();
+    const navigate = useNavigate();
+
     // Toggle Dark Mode
     useEffect(() => {
         if (darkMode) {
@@ -44,9 +46,21 @@ function Navbar() {
         setMenuOpen(!menuOpen);
     };
 
+    const closeMenu = () => {
+        setMenuOpen(false);
+    };
+
+    const handleSignOut = async () => {
+        await signUserOut();
+        closeMenu();
+        navigate('/'); // Navigate to home page after sign out
+    };
+
     return (
-        <nav 
-            className={`p-4 w-full fixed top-0 left-0 z-50 transition-all duration-300 ease-in-out ${darkMode ? 'bg-gray-900 text-white' : 'bg-white text-gray-700'} ${isScrolled ? 'shadow-lg' : ''}`}
+        <nav
+            className={`p-4 w-full fixed top-0 left-0 z-50 transition-all duration-300 ease-in-out ${
+                darkMode ? 'bg-gray-900 text-white' : 'bg-white text-gray-700'
+            } ${isScrolled ? 'shadow-lg' : ''}`}
         >
             <div className='flex justify-between items-center max-w-7xl mx-auto'>
                 {/* Logo */}
@@ -68,20 +82,27 @@ function Navbar() {
                         </li>
                     </ul>
                     {/* Dark Mode Toggle Button */}
-                    <button 
-                        onClick={toggleDarkMode} 
+                    <button
+                        onClick={toggleDarkMode}
                         className='px-2 py-1 flex items-center gap-1 rounded-md font-medium text-sm bg-violet-600 text-white hover:bg-violet-700 dark:bg-violet-400 dark:text-black'
                     >
                         {darkMode ? <FaSun /> : <FaMoon />}
                     </button>
                     {/* Login Button */}
-                    {!currentUser ? <Link to='/login'>
-                        <button 
+                    {!currentUser ? (
+                        <Link to='/login'>
+                            <button className='px-4 py-2 rounded-md font-medium text-sm bg-violet-600 text-white hover:bg-violet-700'>
+                                Login
+                            </button>
+                        </Link>
+                    ) : (
+                        <button
                             className='px-4 py-2 rounded-md font-medium text-sm bg-violet-600 text-white hover:bg-violet-700'
+                            onClick={handleSignOut}
                         >
-                            Login
+                            Sign out
                         </button>
-                    </Link> : <button className='px-4 py-2 rounded-md font-medium text-sm bg-violet-600 text-white hover:bg-violet-700' onClick={signUserOut}>Sign out</button>}
+                    )}
                 </div>
 
                 {/* Mobile Menu Button */}
@@ -97,36 +118,61 @@ function Navbar() {
                 <div className={`md:hidden mt-4 space-y-4 text-center font-medium`}>
                     <ul className='space-y-2'>
                         <li>
-                            <Link to='/' className='block hover:text-violet-600 cursor-pointer'>
+                            <Link
+                                to='/'
+                                className='block hover:text-violet-600 cursor-pointer'
+                                onClick={closeMenu}
+                            >
                                 Home
                             </Link>
                         </li>
                         <li>
-                            <Link to='/contest' className='block hover:text-violet-600 cursor-pointer'>
+                            <Link
+                                to='/contest'
+                                className='block hover:text-violet-600 cursor-pointer'
+                                onClick={closeMenu}
+                            >
                                 Contest
                             </Link>
                         </li>
                         <li>
-                            <Link to='/about' className='block hover:text-violet-600 cursor-pointer'>
+                            <Link
+                                to='/about'
+                                className='block hover:text-violet-600 cursor-pointer'
+                                onClick={closeMenu}
+                            >
                                 About
                             </Link>
                         </li>
                     </ul>
                     {/* Dark Mode Toggle Button */}
-                    <button 
-                        onClick={toggleDarkMode} 
+                    <button
+                        onClick={() => {
+                            toggleDarkMode();
+                            closeMenu();
+                        }}
                         className='px-2 py-1 flex items-center gap-1 justify-center rounded-md font-medium text-sm bg-violet-600 text-white hover:bg-violet-700 dark:bg-violet-400 dark:text-black mx-auto'
                     >
                         {darkMode ? <FaSun /> : <FaMoon />}
                     </button>
                     {/* Login Button */}
-                    {!currentUser ? <Link to='/login'>
-                        <button 
+                    {!currentUser ? (
+                        <Link to='/login'>
+                            <button
+                                className='px-4 py-2 rounded-md font-medium text-sm bg-violet-600 text-white hover:bg-violet-700 mx-auto'
+                                onClick={closeMenu}
+                            >
+                                Login
+                            </button>
+                        </Link>
+                    ) : (
+                        <button
                             className='px-4 py-2 rounded-md font-medium text-sm bg-violet-600 text-white hover:bg-violet-700 mx-auto'
+                            onClick={handleSignOut}
                         >
-                            Login
+                            Sign out
                         </button>
-                    </Link> : <button className='px-4 py-2 rounded-md font-medium text-sm bg-violet-600 text-white hover:bg-violet-700 mx-auto' onClick={signUserOut}>Sign out</button>}
+                    )}
                 </div>
             )}
         </nav>
