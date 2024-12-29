@@ -13,7 +13,7 @@ function Events() {
           </h1>
           
           {/* Events Grid Section */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 shadow-md">
+          <div className="grid grid-cols-1  lg:grid-cols-3 gap-6 shadow-md">
             {list.map((item) => (
               <EventCard item={item} key={item.id} />
             ))}

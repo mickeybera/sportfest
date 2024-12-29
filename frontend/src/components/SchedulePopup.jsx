@@ -13,9 +13,8 @@ function SchedulePopup({ schedule, onClose, onAddSchedule }) {
     if (date.trim() && time.trim() && description.trim()) {
       onAddSchedule(newEvent); // Call parent function to add schedule
       setNewEvent({ date: '', time: '', description: '' }); // Clear inputs
-      toast.success('schedule added!')
+      toast.success('Schedule added!');
     } else {
-      // alert('Please fill in all fields');
       toast.error('Please fill in all fields! ⚠️');
     }
   };
@@ -67,13 +66,13 @@ function SchedulePopup({ schedule, onClose, onAddSchedule }) {
             placeholder="Time"
             className="w-full px-3 py-2 border rounded-md text-gray-800 dark:text-gray-200 bg-white dark:bg-gray-700 placeholder-gray-400 dark:placeholder-gray-400"
           />
-          <input
-            type="text"
+          <textarea
             name="description"
             value={newEvent.description}
             onChange={handleChange}
             placeholder="Description"
-            className="w-full px-3 py-2 border rounded-md text-gray-800 dark:text-gray-200 bg-white dark:bg-gray-700 placeholder-gray-400 dark:placeholder-gray-400"
+            rows="4"
+            className="w-full px-3 py-2 border rounded-md text-gray-800 dark:text-gray-200 bg-white dark:bg-gray-700 placeholder-gray-400 dark:placeholder-gray-400 resize-none"
           />
           <button
             onClick={handleAddSchedule}

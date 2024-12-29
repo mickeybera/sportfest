@@ -11,7 +11,7 @@ function Contest() {
     {
         "id":2,
         "name":"Auction Cricket",
-        "image":"cricket2.avif"
+        "image":"men's cricket.webp"
     },
     {
         "id":3,
@@ -52,6 +52,11 @@ function Contest() {
         "id":10,
         "name":"Women's Volley",
         "image":"women volley.jpg"
+    },
+    {
+        "id":11,
+        "name":"Women's Cricket",
+        "image":"women cricket.png"
     }
 ];
 
