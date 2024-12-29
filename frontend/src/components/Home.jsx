@@ -39,7 +39,7 @@ function Carousel() {
 
     return (
         <>
-            <div className='h-auto'>
+            <div className='h-auto overflow-x-hidden'>
                 {/* Header */}
                 <h2 className='mt-3 text-center text-2xl md:text-3xl font-bold mb-6 text-violet-600'>
                     Welcome to SportFest 2<span className='text-violet-600'>k</span>2<span className='text-violet-600'>5</span>
