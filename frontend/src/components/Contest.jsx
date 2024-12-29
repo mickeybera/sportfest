@@ -6,7 +6,7 @@ function Contest() {
     {
         "id":1,
         "name":"Yearly Cricket",
-        "image":"cricket.jpg"
+        "image":"cricket.jpg",
     },
     {
         "id":2,

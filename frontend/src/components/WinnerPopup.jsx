@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import toast from 'react-hot-toast';
+import { useAuth } from '../contexts/AuthContext';
 
 function WinnerPopup({ winners, onClose, onAddWinner }) {
   const [newWinner, setNewWinner] = useState('');
+  const {currentUser} = useAuth();
 
   const handleAddWinner = () => {
     if (newWinner.trim()) {
@@ -32,7 +34,7 @@ function WinnerPopup({ winners, onClose, onAddWinner }) {
         </ul>
 
         {/* Add Winner Input */}
-        <div className="flex flex-col gap-4 mb-4">
+        {currentUser && <div className="flex flex-col gap-4 mb-4">
           <textarea
             value={newWinner}
             onChange={(e) => setNewWinner(e.target.value)}
@@ -46,7 +48,7 @@ function WinnerPopup({ winners, onClose, onAddWinner }) {
           >
             Add Winner
           </button>
-        </div>
+        </div>}
 
         {/* Close Button */}
         <button
