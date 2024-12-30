@@ -64,7 +64,7 @@ function Navbar() {
         >
             <div className='flex justify-between items-center max-w-7xl mx-auto'>
                 {/* Logo */}
-                <div className='flex gap-2'>
+                <div className='ml-2 flex gap-2'>
                     <div className=''>
                         <img
                             src={college}

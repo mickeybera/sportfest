@@ -6,7 +6,7 @@ function About() {
       <div className="container mx-auto max-w-6xl">
         {/* Header */}
         <div className="text-center mb-10">
-          <h2 className="mt-5 text-3xl md:text-5xl font-bold mb-4">About <span className="text-violet-600 dark:text-violet-400">SportFest 2024</span></h2>
+          <h2 className="mt-8 text-3xl sm:text-4xl md:text-5xl font-bold mb-4">About <span className="text-violet-600 dark:text-violet-400">SportFest 2024</span></h2>
           <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
             Uniting athletes, fostering sportsmanship, and creating unforgettable moments. Welcome to the most anticipated sports festival of the year!
           </p>
