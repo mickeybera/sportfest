@@ -78,6 +78,9 @@ function Navbar() {
                             <Link to='/contest' className='hover:text-violet-600'>Events</Link>
                         </li>
                         <li>
+                            <Link to='/gallery' className='hover:text-violet-600'>Gallery</Link>
+                        </li>
+                        <li>
                             <Link to='/about' className='hover:text-violet-600'>About</Link>
                         </li>
                     </ul>
@@ -132,7 +135,16 @@ function Navbar() {
                                 className='block hover:text-violet-600 cursor-pointer'
                                 onClick={closeMenu}
                             >
-                                Contest
+                                Events
+                            </Link>
+                        </li>
+                        <li>
+                            <Link
+                                to='/gallery'
+                                className='block hover:text-violet-600 cursor-pointer'
+                                onClick={closeMenu}
+                            >
+                                Gallery
                             </Link>
                         </li>
                         <li>

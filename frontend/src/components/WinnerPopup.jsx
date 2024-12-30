@@ -28,7 +28,7 @@ function WinnerPopup({ item, onClose }) {
       // Clear input fields
       setNewWinner({ winnerName: '', score: '' });
 
-      alert('Winner added successfully!');
+      toast.success('Winner added successfully!');
     } catch (error) {
       console.error('Error updating winners:', error);
       toast.error('Failed to add winner. Please try again.');
