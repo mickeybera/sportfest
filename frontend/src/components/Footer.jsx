@@ -28,7 +28,7 @@ function Footer() {
             <Link to='/about'><a className="hover:text-violet-600 hover:underline hover:cursor-pointer font-bold dark:hover:text-violet-600 transition">About</a></Link>
           </li>
           <li>
-            <Link to='/'><a className="hover:text-violet-600 hover:underline  hover:cursor-pointer font-bold dark:hover:text-violet-600 transition">Contact Us</a></Link>
+            <Link to='/contact'><a className="hover:text-violet-600 hover:underline  hover:cursor-pointer font-bold dark:hover:text-violet-600 transition">Contact Us</a></Link>
           </li>
         </ul>
 

@@ -111,10 +111,11 @@ function Navbar() {
                             <button className='px-4 py-2 rounded-md font-medium text-sm bg-violet-600 text-white hover:bg-violet-700'>
                                 Login
                             </button>
+                            <p className='text-red-700 text-sm'>not for students!</p>
                         </Link>
                     ) : (
                         <button
-                            className='px-4 py-2 rounded-md font-medium text-sm bg-violet-600 text-white hover:bg-violet-700'
+                            className='px-4 py-2 rounded-md font-medium text-sm bg-red-600 text-white hover:bg-red-700'
                             onClick={handleSignOut}
                         >
                             logout
@@ -199,10 +200,11 @@ function Navbar() {
                             >
                                 Login
                             </button>
+                            <p className='text-red-600 text-sm'>not for students!</p>
                         </Link>
                     ) : (
                         <button
-                            className='px-4 py-2 rounded-md font-medium text-sm bg-violet-600 text-white hover:bg-violet-700 mx-auto'
+                            className='px-4 py-2 rounded-md font-medium text-sm bg-red-600 text-white hover:bg-red-700 mx-auto'
                             onClick={handleSignOut}
                         >
                             logout
