@@ -55,12 +55,12 @@ function EventsCard({ item }) {
 
       {/* Winner Popup */}
       {showWinnerPopup && (
-        <WinnerPopup winners={item.winners || []} onClose={handleCloseWinnerPopup} />
+        <WinnerPopup item={item} onClose={handleCloseWinnerPopup} />
       )}
 
       {/* Schedule Popup */}
       {showSchedulePopup && (
-        <SchedulePopup schedule={item.schedule || []} onClose={handleCloseSchedulePopup} />
+        <SchedulePopup schedule={item} onClose={handleCloseSchedulePopup} />
       )}
     </div>
   );
