@@ -74,7 +74,7 @@ function Navbar() {
                             className={`object-contain ${darkMode ? 'invert' : ''}`}
                         />
                     </div>
-                    <h1 className='font-bold text-2xl md:text-3xl cursor-pointer'>
+                    <h1 className='mt-2 font-bold text-2xl md:text-3xl cursor-pointer'>
                         SportFest<span className='text-violet-800 dark:text-violet-400'>2k25</span>
                     </h1>
                 </div>
@@ -194,7 +194,7 @@ function Navbar() {
                     {!currentUser ? (
                         <Link to='/login'>
                             <button
-                                className='px-4 py-2 rounded-md font-medium text-sm bg-violet-600 text-white hover:bg-violet-700 mx-auto'
+                                className='mt-1 px-4 py-2 rounded-md font-medium text-sm bg-violet-600 text-white hover:bg-violet-700 mx-auto'
                                 onClick={closeMenu}
                             >
                                 Login
