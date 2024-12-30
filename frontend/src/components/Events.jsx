@@ -5,7 +5,7 @@ import EventCard from './EventsCard'; // Ensure this is the correct path
 function Events() {
   return (
     <>
-      <div className="min-h-screen bg-gray-100 p-6 dark:bg-gray-900">
+      <div className="min-h-screen bg-white p-6 dark:bg-gray-900">
         <div className="max-w-7xl mx-auto">
           {/* Heading Section */}
           <h1 className="text-3xl font-bold text-center text-gray-800 dark:text-white mb-8 mt-20">

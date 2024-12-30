@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { FaSun, FaMoon, FaBars, FaTimes } from 'react-icons/fa'; // Import necessary icons
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
+import college from '../../public/college.jpg'
 
 function Navbar() {
     const [darkMode, setDarkMode] = useState(false);
@@ -58,30 +59,43 @@ function Navbar() {
 
     return (
         <nav
-            className={`p-4 w-full fixed top-0 left-0 z-50 transition-all duration-300 ease-in-out ${
-                darkMode ? 'bg-gray-900 text-white' : 'bg-white text-gray-700'
-            } ${isScrolled ? 'shadow-lg' : ''}`}
+            className={`p-4 w-full fixed top-0 left-0 z-50 transition-all duration-300 ease-in-out ${darkMode ? 'bg-gray-900 text-white' : 'bg-white text-gray-700'
+                } ${isScrolled ? 'shadow-lg' : ''}`}
         >
             <div className='flex justify-between items-center max-w-7xl mx-auto'>
                 {/* Logo */}
-                <h1 className='font-bold text-2xl md:text-3xl cursor-pointer'>
-                    SportFest<span className='text-violet-800 dark:text-violet-400'>2k25</span>
-                </h1>
+                <div className='flex gap-2'>
+                    <div className=''>
+                        <img
+                            src={college}
+                            width={50}
+                            height={10}
+                            alt=""
+                            className={`object-contain ${darkMode ? 'invert' : ''}`}
+                        />
+                    </div>
+                    <h1 className='font-bold text-2xl md:text-3xl cursor-pointer'>
+                        SportFest<span className='text-violet-800 dark:text-violet-400'>2k25</span>
+                    </h1>
+                </div>
 
                 {/* Desktop Menu */}
                 <div className='hidden md:flex items-center gap-6'>
-                    <ul className='flex gap-6 font-medium text-lg cursor-pointer'>
+                    <ul className='flex gap-3 font-medium text-lg cursor-pointer'>
                         <li>
-                            <Link to='/' className='hover:text-violet-600'>Home</Link>
+                            <Link to='/' className='hover:text-violet-600 px-3 py-1 hover:border-2 hover:border-violet-600 hover:rounded-md transition-all'>Home</Link>
                         </li>
                         <li>
-                            <Link to='/contest' className='hover:text-violet-600'>Events</Link>
+                            <Link to='/contest' className='hover:text-violet-600 px-3 py-1 hover:border-2 hover:border-violet-600 hover:rounded-md transition-all'>Events</Link>
                         </li>
                         <li>
-                            <Link to='/gallery' className='hover:text-violet-600'>Gallery</Link>
+                            <Link to='/gallery' className='hover:text-violet-600 px-3 py-1 hover:border-2 hover:border-violet-600 hover:rounded-md transition-all'>Gallery</Link>
                         </li>
                         <li>
-                            <Link to='/about' className='hover:text-violet-600'>About</Link>
+                            <Link to='/about' className='hover:text-violet-600 px-3 py-1 hover:border-2 hover:border-violet-600 hover:rounded-md transition-all'>About</Link>
+                        </li>
+                        <li>
+                            <Link to='/contact' className='hover:text-violet-600 px-3 py-1 hover:border-2 hover:border-violet-600 hover:rounded-md transition-all'>Contact Us</Link>
                         </li>
                     </ul>
                     {/* Dark Mode Toggle Button */}
@@ -103,7 +117,7 @@ function Navbar() {
                             className='px-4 py-2 rounded-md font-medium text-sm bg-violet-600 text-white hover:bg-violet-700'
                             onClick={handleSignOut}
                         >
-                            Sign out
+                            logout
                         </button>
                     )}
                 </div>
@@ -156,6 +170,15 @@ function Navbar() {
                                 About
                             </Link>
                         </li>
+                        <li>
+                            <Link
+                                to='/contact'
+                                className='block hover:text-violet-600 cursor-pointer'
+                                onClick={closeMenu}
+                            >
+                                Contact Us
+                            </Link>
+                        </li>
                     </ul>
                     {/* Dark Mode Toggle Button */}
                     <button
@@ -182,7 +205,7 @@ function Navbar() {
                             className='px-4 py-2 rounded-md font-medium text-sm bg-violet-600 text-white hover:bg-violet-700 mx-auto'
                             onClick={handleSignOut}
                         >
-                            Sign out
+                            logout
                         </button>
                     )}
                 </div>
@@ -192,3 +215,4 @@ function Navbar() {
 }
 
 export default Navbar;
+

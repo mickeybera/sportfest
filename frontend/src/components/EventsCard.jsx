@@ -19,7 +19,7 @@ function EventsCard({ item }) {
     <div className="mt-6 mx-auto max-w-xs rounded-lg overflow-hidden shadow-xl dark:bg-gray-800 dark:text-white bg-white transition-all ease-in-out duration-300">
       {/* Card Image */}
       <img
-        className="w-full h-48 object-cover"
+        className="w-full h-48 object-cover hover:scale-110 duration-300"
         src={item.image}
         alt={item.name || 'Card Image'}
       />
