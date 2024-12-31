@@ -58,6 +58,7 @@ function Navbar() {
             <div className='flex justify-between items-center max-w-7xl mx-auto'>
                 {/* Logo */}
                 <div className='ml-2 flex gap-2'>
+                    <a href="https://gcelt.gov.in/" target='_blank'>
                     <img
                         src={college}
                         width={50}
@@ -65,6 +66,7 @@ function Navbar() {
                         alt='College Logo'
                         className={`object-contain ${darkMode ? 'invert' : ''}`}
                     />
+                    </a>
                     <h1 className='mt-2 font-bold text-2xl md:text-3xl cursor-pointer'>
                         SportFest<span className='text-violet-800 dark:text-violet-400'>2k25</span>
                     </h1>

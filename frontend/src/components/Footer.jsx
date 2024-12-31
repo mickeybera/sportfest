@@ -36,8 +36,10 @@ function Footer() {
         <div className="text-center md:text-right">
           <div className='flex gap-2 justify-center md:justify-end'>
             <div>
+              <a href="https://www.swagcelt.in/" target='_blank'>
               <img 
               src={swa} width={50} height={15} alt="SWA Logo" />
+              </a>
             </div>
             <div>
               <p className="text-sm">&copy; {new Date().getFullYear()} SportFest. All Rights Reserved.</p>
