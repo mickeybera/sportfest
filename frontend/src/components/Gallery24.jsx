@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 
 const galleryImages = [
-    { id: 1, src: '/batminton.jpg', alt: 'Opening Ceremony' },
-    { id: 2, src: '/batminton.jpg', alt: 'Football Match' },
-    { id: 3, src: '/batminton.jpg', alt: 'Relay Race' },
-    { id: 4, src: '/batminton.jpg', alt: 'Basketball Game' },
-    { id: 5, src: '/batminton.jpg', alt: 'Victory Celebration' },
-    { id: 6, src: '/batminton.jpg', alt: 'Award Ceremony' }
+    { id: 1, src: '/opening cerimony 2k24.JPG', alt: 'Opening Ceremony' },
+    { id: 2, src: '/auction cricket 2k24.JPG', alt: 'Auction Cricket Match' },
+    { id: 3, src: '/women cricket 2k24.JPG', alt: 'Women Cricket' },
+    { id: 4, src: '/mix double badminton 2k24.JPG', alt: 'Badminton Mix Double' },
+    { id: 5, src: '/badminton double 2k24.JPG', alt: 'Badminton Double' },
+    { id: 6, src: '/auction cricket opening cerimony 2k24.JPG', alt: 'Auction Cricket Opening Cerimony' },
+    {id: 7, src:'/chess 2k24.JPG', alt:'Chess 2k24'},
+    {id: 8, src:'/carrom 2k24.JPG', alt:'Carrom 2k24'}
 ];
 
 function Gallery24() {
