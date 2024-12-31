@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import { FaSun, FaMoon, FaBars, FaTimes } from 'react-icons/fa'; // Import necessary icons
+import { FaSun, FaMoon, FaBars, FaTimes } from 'react-icons/fa';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
-import college from '../../public/college.jpg'
+import college from '../../public/college.jpg';
 
 function Navbar() {
     const [darkMode, setDarkMode] = useState(false);
     const [menuOpen, setMenuOpen] = useState(false);
     const [isScrolled, setIsScrolled] = useState(false);
+    const [galleryDropdownOpen, setGalleryDropdownOpen] = useState(false);
+    const [mobileGalleryDropdownOpen, setMobileGalleryDropdownOpen] = useState(false);
 
     const { currentUser, signUserOut } = useAuth();
     const navigate = useNavigate();
@@ -23,57 +25,46 @@ function Navbar() {
         }
     }, [darkMode]);
 
-    // Handle Scroll to add shadow when user scrolls down
+    // Handle Scroll
     useEffect(() => {
         const handleScroll = () => {
-            if (window.scrollY > 0) {
-                setIsScrolled(true);
-            } else {
-                setIsScrolled(false);
-            }
+            setIsScrolled(window.scrollY > 0);
         };
 
         window.addEventListener('scroll', handleScroll);
-        return () => {
-            window.removeEventListener('scroll', handleScroll);
-        };
+        return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
-    const toggleDarkMode = () => {
-        setDarkMode(!darkMode);
-    };
-
-    const toggleMenu = () => {
-        setMenuOpen(!menuOpen);
-    };
-
-    const closeMenu = () => {
-        setMenuOpen(false);
+    const toggleDarkMode = () => setDarkMode(!darkMode);
+    const toggleMenu = () => setMenuOpen(!menuOpen);
+    const closeMenu = () => setMenuOpen(false);
+    const closeGalleryDropdowns = () => {
+        setGalleryDropdownOpen(false);
+        setMobileGalleryDropdownOpen(false);
     };
 
     const handleSignOut = async () => {
         await signUserOut();
         closeMenu();
-        navigate('/'); // Navigate to home page after sign out
+        navigate('/');
     };
 
     return (
         <nav
-            className={`p-4 w-full fixed top-0 left-0 z-50 transition-all duration-300 ease-in-out ${darkMode ? 'bg-gray-900 text-white' : 'bg-white text-gray-700'
-                } ${isScrolled ? 'shadow-lg' : ''}`}
+            className={`p-4 w-full fixed top-0 left-0 z-50 transition-all duration-300 ease-in-out ${
+                darkMode ? 'bg-gray-900 text-white' : 'bg-white text-gray-700'
+            } ${isScrolled ? 'shadow-lg' : ''}`}
         >
             <div className='flex justify-between items-center max-w-7xl mx-auto'>
                 {/* Logo */}
                 <div className='ml-2 flex gap-2'>
-                    <div className=''>
-                        <img
-                            src={college}
-                            width={50}
-                            height={10}
-                            alt=""
-                            className={`object-contain ${darkMode ? 'invert' : ''}`}
-                        />
-                    </div>
+                    <img
+                        src={college}
+                        width={50}
+                        height={10}
+                        alt='College Logo'
+                        className={`object-contain ${darkMode ? 'invert' : ''}`}
+                    />
                     <h1 className='mt-2 font-bold text-2xl md:text-3xl cursor-pointer'>
                         SportFest<span className='text-violet-800 dark:text-violet-400'>2k25</span>
                     </h1>
@@ -83,42 +74,75 @@ function Navbar() {
                 <div className='hidden md:flex items-center gap-6'>
                     <ul className='flex gap-3 font-medium text-lg cursor-pointer'>
                         <li>
-                            <Link to='/' className='hover:text-violet-600 px-3 py-1 hover:border-2 hover:border-violet-600 hover:rounded-md transition-all'>Home</Link>
+                            <Link to='/' className='hover:text-violet-600 px-3 py-1 hover:border-2 hover:border-violet-600 hover:rounded-md transition-all'>
+                                Home
+                            </Link>
                         </li>
                         <li>
-                            <Link to='/contest' className='hover:text-violet-600 px-3 py-1 hover:border-2 hover:border-violet-600 hover:rounded-md transition-all'>Events</Link>
+                            <Link to='/contest' className='hover:text-violet-600 px-3 py-1 hover:border-2 hover:border-violet-600 hover:rounded-md transition-all'>
+                                Events
+                            </Link>
+                        </li>
+                        {/* Gallery Dropdown */}
+                        <li className='relative'>
+                            <button
+                                onClick={() => setGalleryDropdownOpen(!galleryDropdownOpen)}
+                                className='hover:text-violet-600 px-3 py-1 hover:border-2 hover:border-violet-600 hover:rounded-md transition-all'
+                            >
+                                Gallery
+                            </button>
+                            {galleryDropdownOpen && (
+                                <ul className='absolute left-0 mt-1 w-40 bg-white dark:bg-gray-800 shadow-lg rounded-md overflow-hidden z-50'>
+                                    <li>
+                                        <Link to='/gallery24' onClick={(e) => {
+                                                e.stopPropagation();
+                                                closeGalleryDropdowns();
+                                            }} className='block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700'>
+                                            2024
+                                        </Link>
+                                    </li>
+                                    <li>
+                                        <Link to='/gallery25' onClick={(e) => {
+                                                e.stopPropagation();
+                                                closeGalleryDropdowns();
+                                            }} className='block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700'>
+                                            2025
+                                        </Link>
+                                    </li>
+                                    <li>
+                                        <Link to='/gallery26' onClick={(e) => {
+                                                e.stopPropagation();
+                                                closeGalleryDropdowns();
+                                            }} className='block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700'>
+                                            2026
+                                        </Link>
+                                    </li>
+                                </ul>
+                            )}
                         </li>
                         <li>
-                            <Link to='/gallery' className='hover:text-violet-600 px-3 py-1 hover:border-2 hover:border-violet-600 hover:rounded-md transition-all'>Gallery</Link>
+                            <Link to='/about' className='hover:text-violet-600 px-3 py-1 hover:border-2 hover:border-violet-600 hover:rounded-md transition-all'>
+                                About
+                            </Link>
                         </li>
                         <li>
-                            <Link to='/about' className='hover:text-violet-600 px-3 py-1 hover:border-2 hover:border-violet-600 hover:rounded-md transition-all'>About</Link>
-                        </li>
-                        <li>
-                            <Link to='/contact' className='hover:text-violet-600 px-3 py-1 hover:border-2 hover:border-violet-600 hover:rounded-md transition-all'>Contact Us</Link>
+                            <Link to='/contact' className='hover:text-violet-600 px-3 py-1 hover:border-2 hover:border-violet-600 hover:rounded-md transition-all'>
+                                Contact Us
+                            </Link>
                         </li>
                     </ul>
-                    {/* Dark Mode Toggle Button */}
-                    <button
-                        onClick={toggleDarkMode}
-                        className='px-2 py-1 flex items-center gap-1 rounded-md font-medium text-sm bg-violet-600 text-white hover:bg-violet-700 dark:bg-violet-400 dark:text-black'
-                    >
+                    {/* Dark Mode Toggle */}
+                    <button onClick={toggleDarkMode} className='px-2 py-1 rounded-md bg-violet-600 text-white'>
                         {darkMode ? <FaSun /> : <FaMoon />}
                     </button>
-                    {/* Login Button */}
+                    {/* Auth Buttons */}
                     {!currentUser ? (
                         <Link to='/login'>
-                            <button className='px-4 py-2 rounded-md font-medium text-sm bg-violet-600 text-white hover:bg-violet-700'>
-                                Login
-                            </button>
-                            <p className='text-red-700 text-sm'>not for students!</p>
+                            <button className='px-4 py-2 rounded-md bg-violet-600 text-white'>Login</button>
                         </Link>
                     ) : (
-                        <button
-                            className='px-4 py-2 rounded-md font-medium text-sm bg-red-600 text-white hover:bg-red-700'
-                            onClick={handleSignOut}
-                        >
-                            logout
+                        <button onClick={handleSignOut} className='px-4 py-2 rounded-md bg-red-600 text-white'>
+                            Logout
                         </button>
                     )}
                 </div>
@@ -133,83 +157,58 @@ function Navbar() {
 
             {/* Mobile Menu */}
             {menuOpen && (
-                <div className={`md:hidden mt-4 space-y-4 text-center font-medium`}>
+                <div className='md:hidden mt-4 text-center font-medium'>
                     <ul className='space-y-2'>
                         <li>
-                            <Link
-                                to='/'
-                                className='block hover:text-violet-600 cursor-pointer'
-                                onClick={closeMenu}
-                            >
-                                Home
-                            </Link>
+                            <Link to='/' onClick={closeMenu}>Home</Link>
                         </li>
                         <li>
-                            <Link
-                                to='/contest'
-                                className='block hover:text-violet-600 cursor-pointer'
-                                onClick={closeMenu}
-                            >
-                                Events
-                            </Link>
+                            <Link to='/contest' onClick={closeMenu}>Events</Link>
                         </li>
+                        {/* Mobile Gallery Dropdown */}
                         <li>
-                            <Link
-                                to='/gallery'
-                                className='block hover:text-violet-600 cursor-pointer'
-                                onClick={closeMenu}
-                            >
+                            <button onClick={() => setMobileGalleryDropdownOpen(!mobileGalleryDropdownOpen)} className='text-left px-4 py-2'>
                                 Gallery
-                            </Link>
+                            </button>
+                            {mobileGalleryDropdownOpen && (
+                                <ul className='ml-4 space-y-1'>
+                                    <li><Link to='/gallery24' onClick={(e) => {
+                                                e.stopPropagation();
+                                                closeGalleryDropdowns();
+                                                closeMenu();
+                                            }}>
+                                                2024
+                                                </Link>
+                                    </li>
+                                    <li><Link to='/gallery25' onClick={(e) => {
+                                                e.stopPropagation();
+                                                closeGalleryDropdowns();
+                                                closeMenu();
+                                            }}>
+                                                2025
+                                                </Link>
+                                    </li>
+                                    <li><Link to='/gallery26' onClick={(e) => {
+                                                e.stopPropagation();
+                                                closeGalleryDropdowns();
+                                                closeMenu();
+                                            }}>
+                                                2026
+                                            </Link>
+                                    </li>
+                                </ul>
+                            )}
                         </li>
                         <li>
-                            <Link
-                                to='/about'
-                                className='block hover:text-violet-600 cursor-pointer'
-                                onClick={closeMenu}
-                            >
-                                About
-                            </Link>
+                            <Link to='/about' onClick={closeMenu}>About</Link>
                         </li>
                         <li>
-                            <Link
-                                to='/contact'
-                                className='block hover:text-violet-600 cursor-pointer'
-                                onClick={closeMenu}
-                            >
-                                Contact Us
-                            </Link>
+                            <Link to='/contact' onClick={closeMenu}>Contact Us</Link>
                         </li>
                     </ul>
-                    {/* Dark Mode Toggle Button */}
-                    <button
-                        onClick={() => {
-                            toggleDarkMode();
-                            closeMenu();
-                        }}
-                        className='px-2 py-1 flex items-center gap-1 justify-center rounded-md font-medium text-sm bg-violet-600 text-white hover:bg-violet-700 dark:bg-violet-400 dark:text-black mx-auto'
-                    >
+                    <button onClick={toggleDarkMode} className='mt-2 px-4 py-2 bg-violet-600 text-white'>
                         {darkMode ? <FaSun /> : <FaMoon />}
                     </button>
-                    {/* Login Button */}
-                    {!currentUser ? (
-                        <Link to='/login'>
-                            <button
-                                className='mt-1 px-4 py-2 rounded-md font-medium text-sm bg-violet-600 text-white hover:bg-violet-700 mx-auto'
-                                onClick={closeMenu}
-                            >
-                                Login
-                            </button>
-                            <p className='text-red-600 text-sm'>not for students!</p>
-                        </Link>
-                    ) : (
-                        <button
-                            className='px-4 py-2 rounded-md font-medium text-sm bg-red-600 text-white hover:bg-red-700 mx-auto'
-                            onClick={handleSignOut}
-                        >
-                            logout
-                        </button>
-                    )}
                 </div>
             )}
         </nav>
@@ -217,4 +216,3 @@ function Navbar() {
 }
 
 export default Navbar;
-

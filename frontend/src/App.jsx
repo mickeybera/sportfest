@@ -10,8 +10,8 @@ import WinnerPopup from './components/WinnerPopup';
 import SchedulePopup from './components/SchedulePopup';
 import Footer from './components/Footer';
 import About from './components/About';
-import Gallery from './components/Gallery';
 import Contact from './components/Contact';
+import Gallery24 from './components/Gallery24';
 
 function App() {
     return (
@@ -25,7 +25,7 @@ function App() {
                 <Route path='/contest' element={<Contest />} />
                 <Route path='/winnerpopup' element={<WinnerPopup />} />
                 <Route path='/sechedule' element={<SchedulePopup />} />
-                <Route path='/gallery' element={<Gallery />}/>
+                <Route path='/gallery24' element={<Gallery24 />}/>
                 <Route path='/about' element={<About />} />
                 <Route path='/contact' element={<Contact/>} />
                 {/* Add other routes as necessary */}

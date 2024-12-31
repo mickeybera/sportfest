@@ -9,7 +9,7 @@ const galleryImages = [
     { id: 6, src: '/batminton.jpg', alt: 'Award Ceremony' }
 ];
 
-function Gallery() {
+function Gallery24() {
     const [selectedImage, setSelectedImage] = useState(null);
 
     const openLightbox = (image) => {
@@ -67,4 +67,4 @@ function Gallery() {
     );
 }
 
-export default Gallery;
+export default Gallery24;
