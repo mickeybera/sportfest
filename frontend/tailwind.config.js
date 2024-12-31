@@ -4,7 +4,12 @@ module.exports = {
   ],
   darkMode: 'class',  // This enables dark mode using a class (e.g., 'dark')
   theme: {
-    extend: {},
+    extend: {
+      // fontFamily:{
+      //   nuinito:['Nuinito','serif']
+      // }
+    },
+
   },
   plugins: [],
 }

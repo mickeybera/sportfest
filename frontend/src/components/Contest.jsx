@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { collection, addDoc, getDocs } from 'firebase/firestore';
-import {db} from '../firebase'; // Firestore config file
+import { db } from '../firebase'; // Firestore config file
 import EventsCard from './EventsCard';
 import { useAuth } from '../contexts/AuthContext';
 
@@ -13,8 +13,8 @@ function Contest() {
     name: '',
     image: '',
     winners: {
-        winnerName: '',
-        score: ''
+      winnerName: '',
+      score: ''
     },
     schedule: '',
     scheduleImg: ''
@@ -52,8 +52,8 @@ function Contest() {
     try {
       const docRef = await addDoc(collection(db, 'games'), newGame);
       setItems([...items, { id: docRef.id, ...newGame }]);
-      setNewGame({ name: '', image: '' }); // Clear the form
-      setError(null); // Clear any previous errors
+      setNewGame({ name: '', image: '', winners: { winnerName: '', score: '' }, schedule: '' });
+      setError(null);
     } catch (err) {
       console.error('Error adding game:', err);
       setError('Failed to add game. Please try again.');
@@ -76,34 +76,34 @@ function Contest() {
       {currentUser && <div className="mt-8">
         <form
           onSubmit={handleAddGame}
-          className="flex flex-col gap-4 max-w-md mx-auto p-4 border rounded-lg shadow-lg"
+          className="flex flex-col gap-4 max-w-md mx-auto p-4 border rounded-lg shadow-lg bg-white dark:bg-gray-800 dark:border-gray-700"
         >
-        <h2 className="text-xl font-bold mb-4">Add a New Game</h2>
+          <h2 className="text-xl font-bold mb-4 text-gray-900 dark:text-gray-100">Add a New Game</h2>
           <input
             type="text"
             placeholder="Game Name"
             value={newGame.name}
             onChange={(e) => setNewGame({ ...newGame, name: e.target.value })}
-            className="p-2 border rounded"
+            className="p-2 border rounded text-gray-900 dark:text-gray-100 dark:bg-gray-700 dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
           <input
             type="text"
             placeholder="Image URL"
             value={newGame.image}
             onChange={(e) => setNewGame({ ...newGame, image: e.target.value })}
-            className="p-2 border rounded"
+            className="p-2 border rounded text-gray-900 dark:text-gray-100 dark:bg-gray-700 dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
-           <input
+          <input
             type="datetime-local"
             placeholder="Schedule"
             value={newGame.schedule}
             onChange={(e) => setNewGame({ ...newGame, schedule: e.target.value })}
             required
-            className="p-2 border rounded"
+            className="p-2 border rounded text-gray-900 dark:text-gray-100 dark:bg-gray-700 dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
           <button
             type="submit"
-            className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+            className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600"
           >
             Add Game
           </button>
@@ -114,3 +114,4 @@ function Contest() {
 }
 
 export default Contest;
+

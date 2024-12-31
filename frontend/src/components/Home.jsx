@@ -44,7 +44,7 @@ function Carousel() {
                 <h2 className='mt-3 text-center text-2xl md:text-3xl font-bold mb-6 text-violet-600'>
                     Welcome to SportFest 2<span className='text-violet-600'>k</span>2<span className='text-violet-600'>5</span>
                 </h2>
-                <div className='ml-2 w-full lg:w-3/3 mr-2 mt-5 px-2 md:px-4 sm:mr-4'>
+                <div className='ml-1 mr-4 py-3 w-full lg:w-3/3  mt-5 px-2 md:px-4 sm:mr-4'>
                     {/* Carousel */}
                     <Slider {...settings}>
                         <div>

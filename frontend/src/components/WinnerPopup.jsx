@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { doc, updateDoc } from 'firebase/firestore';
 import { db } from '../firebase';
 import { useAuth } from '../contexts/AuthContext';
+import toast from 'react-hot-toast';
 
 function WinnerPopup({ item, onClose }) {
   const [newWinner, setNewWinner] = useState({ winnerName: '', score: '' });
@@ -10,7 +11,7 @@ function WinnerPopup({ item, onClose }) {
   const {currentUser} = useAuth();
   const handleAddWinner = async () => {
     if (!newWinner.winnerName.trim() || !newWinner.score.trim()) {
-      alert('Please enter both winner name and score');
+      toast.error('Please enter both winner name and score');
       return;
     }
 
@@ -27,10 +28,10 @@ function WinnerPopup({ item, onClose }) {
       // Clear input fields
       setNewWinner({ winnerName: '', score: '' });
 
-      alert('Winner added successfully!');
+      toast.success('Winner added successfully!');
     } catch (error) {
       console.error('Error updating winners:', error);
-      alert('Failed to add winner. Please try again.');
+      toast.error('Failed to add winner. Please try again.');
     }
   };
 
@@ -54,7 +55,7 @@ function WinnerPopup({ item, onClose }) {
 
         {/* Add Winner Input */}
         {currentUser && <div className="flex flex-col gap-4 mb-4">
-          <input
+          <textarea
             type="text"
             value={newWinner.winnerName}
             onChange={(e) => setNewWinner({ ...newWinner, winnerName: e.target.value })}
