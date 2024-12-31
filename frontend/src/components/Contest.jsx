@@ -2,11 +2,13 @@ import React, { useState, useEffect } from 'react';
 import { collection, addDoc, getDocs } from 'firebase/firestore';
 import {db} from '../firebase'; // Firestore config file
 import EventsCard from './EventsCard';
+import { useAuth } from '../contexts/AuthContext';
 
 function Contest() {
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const {currentUser} = useAuth();
   const [newGame, setNewGame] = useState({
     name: '',
     image: '',
@@ -14,7 +16,8 @@ function Contest() {
         winnerName: '',
         score: ''
     },
-    schedule: ''
+    schedule: '',
+    scheduleImg: ''
   });
 
   // Fetch games from Firestore
@@ -70,7 +73,7 @@ function Contest() {
       </div>
 
       {/* Add New Game Form */}
-      <div className="mt-8">
+      {currentUser && <div className="mt-8">
         <form
           onSubmit={handleAddGame}
           className="flex flex-col gap-4 max-w-md mx-auto p-4 border rounded-lg shadow-lg"
@@ -105,7 +108,7 @@ function Contest() {
             Add Game
           </button>
         </form>
-      </div>
+      </div>}
     </div>
   );
 }

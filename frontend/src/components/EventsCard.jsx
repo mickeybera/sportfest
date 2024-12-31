@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import WinnerPopup from './WinnerPopup';
 import SchedulePopup from './SchedulePopup';
+import { CiCalendar } from "react-icons/ci";
 
 function EventsCard({ item }) {
   // State for Popups
@@ -29,8 +30,16 @@ function EventsCard({ item }) {
         <h3 className="font-semibold text-xl mb-2">{item.name}</h3>
 
         {/* Description */}
-        <p className="text-base text-gray-700 dark:text-gray-300 mb-4">
-          {item.description}
+        <p className="text-base text-gray-700 dark:text-gray-300 mb-4 flex items-center">
+        <CiCalendar size={20}/>
+        {new Date(item.schedule).toLocaleDateString('en-US', {
+            weekday: 'short',
+            year: 'numeric',
+            month: 'short',
+            day: 'numeric',
+            hour: '2-digit',
+            minute: '2-digit'
+          })}
         </p>
 
         {/* Buttons for Winner and Schedule */}
@@ -60,7 +69,7 @@ function EventsCard({ item }) {
 
       {/* Schedule Popup */}
       {showSchedulePopup && (
-        <SchedulePopup schedule={item} onClose={handleCloseSchedulePopup} />
+        <SchedulePopup item={item} onClose={handleCloseSchedulePopup} />
       )}
     </div>
   );
