@@ -1,14 +1,15 @@
 import React, { useState } from 'react';
 
 const galleryImages = [
-    { id: 1, src: '/opening cerimony 2k24.JPG', alt: 'Opening Ceremony' },
-    { id: 2, src: '/auction cricket 2k24.JPG', alt: 'Auction Cricket Match' },
-    { id: 3, src: '/women cricket 2k24.JPG', alt: 'Women Cricket' },
-    { id: 4, src: '/mix double badminton 2k24.JPG', alt: 'Badminton Mix Double' },
-    { id: 5, src: '/badminton double 2k24.JPG', alt: 'Badminton Double' },
-    { id: 6, src: '/auction cricket opening cerimony 2k24.JPG', alt: 'Auction Cricket Opening Cerimony' },
+    { id: 1, src: '/opening cerimony 2k24.JPG', alt: 'Opening Ceremony 2k24' },
+    { id: 2, src: '/auction cricket 2k24.JPG', alt: 'Auction Cricket Match 2k24' },
+    { id: 3, src: '/women cricket 2k24.JPG', alt: 'Women Cricket 2k24' },
+    { id: 4, src: '/mix double badminton 2k24.JPG', alt: 'Badminton Mix Double 2k24' },
+    { id: 5, src: '/badminton double 2k24.JPG', alt: 'Badminton Double 2k24' },
+    { id: 6, src: '/auction cricket opening cerimony 2k24.JPG', alt: 'Auction Cricket Opening Cerimony 2k24' },
     {id: 7, src:'/chess 2k24.JPG', alt:'Chess 2k24'},
-    {id: 8, src:'/carrom 2k24.JPG', alt:'Carrom 2k24'}
+    {id: 8, src:'/carrom 2k24.JPG', alt:'Carrom 2k24'},
+    {id: 9, src:'/yearly volley 2k24.JPG',alt:'Yearly Volley 2k24'}
 ];
 
 function Gallery24() {

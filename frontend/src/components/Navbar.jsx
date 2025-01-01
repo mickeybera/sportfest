@@ -51,9 +51,8 @@ function Navbar() {
 
     return (
         <nav
-            className={`p-4 w-full fixed top-0 left-0 z-50 transition-all duration-300 ease-in-out ${
-                darkMode ? 'bg-gray-900 text-white' : 'bg-white text-gray-700'
-            } ${isScrolled ? 'shadow-lg' : ''}`}
+            className={`p-4 w-full fixed top-0 left-0 z-50 transition-all duration-300 ease-in-out ${darkMode ? 'bg-gray-900 text-white' : 'bg-white text-gray-700'
+                } ${isScrolled ? 'shadow-lg' : ''}`}
         >
             <div className='flex justify-between items-center max-w-7xl mx-auto'>
                 {/* Logo */}
@@ -64,7 +63,7 @@ function Navbar() {
                             width={50}
                             height={10}
                             alt='College Logo'
-                            className={`object-contain ${darkMode ? 'invert' : ''}`}
+                            className={`object-contain ${darkMode ? 'invert' : ''} sm:ml-1`}
                         />
                     </a>
                     <h1 className='mt-2 font-bold text-2xl md:text-3xl cursor-pointer'>
@@ -97,25 +96,25 @@ function Navbar() {
                                 <ul className='absolute left-0 mt-1 w-40 bg-white dark:bg-gray-800 shadow-lg rounded-md overflow-hidden z-50'>
                                     <li>
                                         <Link to='/gallery24' onClick={(e) => {
-                                                e.stopPropagation();
-                                                closeGalleryDropdowns();
-                                            }} className='block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700'>
+                                            e.stopPropagation();
+                                            closeGalleryDropdowns();
+                                        }} className='block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700'>
                                             2024
                                         </Link>
                                     </li>
                                     <li>
                                         <Link to='/gallery25' onClick={(e) => {
-                                                e.stopPropagation();
-                                                closeGalleryDropdowns();
-                                            }} className='block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700'>
+                                            e.stopPropagation();
+                                            closeGalleryDropdowns();
+                                        }} className='block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700'>
                                             2025
                                         </Link>
                                     </li>
                                     <li>
                                         <Link to='/gallery26' onClick={(e) => {
-                                                e.stopPropagation();
-                                                closeGalleryDropdowns();
-                                            }} className='block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700'>
+                                            e.stopPropagation();
+                                            closeGalleryDropdowns();
+                                        }} className='block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700'>
                                             2026
                                         </Link>
                                     </li>
@@ -176,29 +175,29 @@ function Navbar() {
                                 <ul className='ml-4 space-y-1'>
                                     <li>
                                         <Link to='/gallery24' onClick={(e) => {
-                                                e.stopPropagation();
-                                                closeGalleryDropdowns();
-                                                closeMenu();
-                                            }}>
-                                                2024
+                                            e.stopPropagation();
+                                            closeGalleryDropdowns();
+                                            closeMenu();
+                                        }}>
+                                            2024
                                         </Link>
                                     </li>
                                     <li>
                                         <Link to='/gallery25' onClick={(e) => {
-                                                e.stopPropagation();
-                                                closeGalleryDropdowns();
-                                                closeMenu();
-                                            }}>
-                                                2025
+                                            e.stopPropagation();
+                                            closeGalleryDropdowns();
+                                            closeMenu();
+                                        }}>
+                                            2025
                                         </Link>
                                     </li>
                                     <li>
                                         <Link to='/gallery26' onClick={(e) => {
-                                                e.stopPropagation();
-                                                closeGalleryDropdowns();
-                                                closeMenu();
-                                            }}>
-                                                2026
+                                            e.stopPropagation();
+                                            closeGalleryDropdowns();
+                                            closeMenu();
+                                        }}>
+                                            2026
                                         </Link>
                                     </li>
                                 </ul>
@@ -211,31 +210,32 @@ function Navbar() {
                             <Link to='/contact' onClick={closeMenu}>Contact Us</Link>
                         </li>
                     </ul>
-                    <button onClick={toggleDarkMode} className='mt-2 px-4 py-2 bg-violet-600 text-white rounded-md'>
-                        {darkMode ? <FaSun /> : <FaMoon />}
-                    </button>
-
+                    <div onClick={closeMenu}>
+                        <button onClick={toggleDarkMode} className='mt-2 px-4 py-2 bg-violet-600 text-white rounded-md'>
+                            {darkMode ? <FaSun /> : <FaMoon />}
+                        </button>
+                    </div>
                     {/* Login button */}
                     <div className='mt-2'>
-                    {!currentUser ? (
-                        <Link to='/login'>
+                        {!currentUser ? (
+                            <Link to='/login'>
+                                <button
+                                    className='px-4 py-2 rounded-md font-medium text-sm bg-violet-600 text-white hover:bg-violet-700 mx-auto'
+                                    onClick={closeMenu}
+                                >
+                                    Login
+                                </button>
+                                
+                            </Link>
+                        ) : (
                             <button
-                                className='px-4 py-2 rounded-md font-medium text-sm bg-violet-600 text-white hover:bg-violet-700 mx-auto'
-                                onClick={closeMenu}
+                                className='px-4 py-2 rounded-md font-medium text-sm bg-red-600 text-white hover:bg-red-700 mx-auto'
+                                onClick={handleSignOut}
                             >
-                                Login
+                                Logout
                             </button>
-                            <p className='text-red-600 text-sm'>not for students!</p>
-                        </Link>
-                    ) : (
-                        <button
-                            className='px-4 py-2 rounded-md font-medium text-sm bg-red-600 text-white hover:bg-red-700 mx-auto'
-                            onClick={handleSignOut}
-                        >
-                            Logout
-                        </button>
-                    )}
-                </div>
+                        )}
+                    </div>
                 </div>
             )}
         </nav>

@@ -2,6 +2,7 @@ import React, { useContext, createContext, useEffect, useState } from "react";
 import { auth } from '../firebase';
 import { onAuthStateChanged, signOut } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
 
 const AuthContext = createContext();
 
@@ -17,7 +18,7 @@ export function AuthProvider({ children }) {
   const signUserOut = async () => {
   try {
     await signOut(auth);
-    alert("User Logged out")
+    toast.success('successfully logout!')
     navigate("/");
   } catch (err) {
     setError(err.message);
