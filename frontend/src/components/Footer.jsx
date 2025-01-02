@@ -22,7 +22,7 @@ function Footer() {
             <Link to='/contest' className="hover:text-violet-600 hover:underline font-bold dark:hover:text-violet-600 transition">Events</Link>
           </li>
           <li>
-            <Link to='/gallery' className="hover:text-violet-600 hover:underline font-bold dark:hover:text-violet-600 transition">Gallery</Link>
+            <Link to='/' className="hover:text-violet-600 hover:underline font-bold dark:hover:text-violet-600 transition">Gallery</Link>
           </li>
           <li>
             <Link to='/about' className="hover:text-violet-600 hover:underline font-bold dark:hover:text-violet-600 transition">About</Link>

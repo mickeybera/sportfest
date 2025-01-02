@@ -82,7 +82,7 @@ function Login() {
                             </button>
                             <p className='mt-6 gap-2'>
                                 Do not have account?
-                                <Link to={'/signup'}>
+                                <Link to={'/'}>
                                     <span className='text-violet-600 dark:text-violet-400 underline cursor-pointer'>signup</span>
                                 </Link>
                             </p>
