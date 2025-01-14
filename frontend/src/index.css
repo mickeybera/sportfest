@@ -11,3 +11,23 @@ body {
 body.dark {
     @apply bg-gray-900 text-white; /* Dark Mode */
 }
+
+@keyframes lighthouse {
+    0% {
+      box-shadow: 0 0 0 rgba(255, 255, 255, 0);
+      transform: scale(1);
+    }
+    50% {
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.8), 0 0 40px rgba(255, 255, 255, 0.6);
+      transform: scale(1.5);
+    }
+    100% {
+      box-shadow: 0 0 0 rgba(255, 255, 255, 0);
+      transform: scale(1);
+    }
+  }
+  
+  .animate-lighthouse {
+    animation: lighthouse 1s ease-out;
+  }
+  

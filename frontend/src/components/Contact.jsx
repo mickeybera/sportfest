@@ -20,7 +20,7 @@ function ContactForm() {
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log('Form Submitted:', formData);
-        toast.succes("Your quary summited! we will contact with you")
+        toast.success("Your quary summited! we will contact with you")
     };
 
     return (
@@ -28,7 +28,7 @@ function ContactForm() {
             <h1 className="text-3xl font-bold text-center mb-6 text-gray-800 dark:text-white">
                 Contact Us
             </h1>
-            <form onSubmit={handleSubmit} className="space-y-6">
+            <form type='submit' onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     {/* Full Name */}
                     <div>

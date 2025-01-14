@@ -49,7 +49,7 @@ function About() {
         <div className="text-center mt-12">
           <h3 className="text-2xl font-semibold mb-3">Join Us!</h3>
           <p className="text-gray-600 dark:text-gray-400 mb-4">
-            Be part of the action, excitement, and community spirit of SportFest 2024. Whether you're an athlete, volunteer, or spectator, there's a place for you!
+            Be part of the action, excitement, and community spirit of SportFest 2025. Whether you're an athlete, volunteer, or spectator, there's a place for you!
           </p>
           <a 
             // href="/register" 

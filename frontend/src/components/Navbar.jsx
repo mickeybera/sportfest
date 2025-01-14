@@ -75,12 +75,12 @@ function Navbar() {
                 <div className='hidden md:flex items-center gap-6'>
                     <ul className='flex gap-3 font-medium text-lg cursor-pointer'>
                         <li>
-                            <Link to='/' className='hover:text-violet-600 px-3 py-1 hover:border-2 hover:border-violet-600 hover:rounded-md transition-all'>
+                            <Link to='/' className='px-3 py-1 hover:border-2 hover:border-violet-600 hover:rounded-md transition-all'>
                                 Home
                             </Link>
                         </li>
                         <li>
-                            <Link to='/contest' className='hover:text-violet-600 px-3 py-1 hover:border-2 hover:border-violet-600 hover:rounded-md transition-all'>
+                            <Link to='/contest' className='px-3 py-1 hover:border-2 hover:border-violet-600 hover:rounded-md transition-all'>
                                 Events
                             </Link>
                         </li>
@@ -88,7 +88,7 @@ function Navbar() {
                         <li className='relative'>
                             <button
                                 onClick={() => setGalleryDropdownOpen(!galleryDropdownOpen)}
-                                className='hover:text-violet-600 px-3 py-1 hover:border-2 hover:border-violet-600 hover:rounded-md transition-all'
+                                className='px-3 py-1 hover:border-2 hover:border-violet-600 hover:rounded-md transition-all'
                             >
                                 Gallery
                             </button>
@@ -122,12 +122,12 @@ function Navbar() {
                             )}
                         </li>
                         <li>
-                            <Link to='/about' className='hover:text-violet-600 px-3 py-1 hover:border-2 hover:border-violet-600 hover:rounded-md transition-all'>
+                            <Link to='/about' className='px-3 py-1 hover:border-2 hover:border-violet-600 hover:rounded-md transition-all'>
                                 About
                             </Link>
                         </li>
                         <li>
-                            <Link to='/contact' className='hover:text-violet-600 px-3 py-1 hover:border-2 hover:border-violet-600 hover:rounded-md transition-all'>
+                            <Link to='/contact' className='px-3 py-1 hover:border-2 hover:border-violet-600 hover:rounded-md transition-all'>
                                 Contact Us
                             </Link>
                         </li>
