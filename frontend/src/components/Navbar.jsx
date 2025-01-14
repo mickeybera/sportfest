@@ -67,7 +67,7 @@ function Navbar() {
                         />
                     </a>
                     <h1 className='mt-2 font-bold text-2xl md:text-3xl cursor-pointer'>
-                        SportFest<span className='text-violet-800 dark:text-violet-400'>2k25</span>
+                        Kreeda<span className='text-violet-800 dark:text-violet-400'>kriti</span>
                     </h1>
                 </div>
 
