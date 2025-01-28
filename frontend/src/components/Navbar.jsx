@@ -85,7 +85,7 @@ function Navbar() {
                             </Link>
                         </li>
                         {/* Gallery Dropdown */}
-                        <li className='relative'>
+                        <li className='relative bottom-1'>
                             <button
                                 onClick={() => setGalleryDropdownOpen(!galleryDropdownOpen)}
                                 className='px-3 py-1 hover:border-2 hover:border-violet-600 hover:rounded-md transition-all'

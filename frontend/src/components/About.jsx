@@ -51,12 +51,7 @@ function About() {
           <p className="text-gray-600 dark:text-gray-400 mb-4">
             Be part of the action, excitement, and community spirit of SportFest 2025. Whether you're an athlete, volunteer, or spectator, there's a place for you!
           </p>
-          <a 
-            // href="/register" 
-            className="bg-violet-600 dark:bg-violet-600 text-white dark:text-gray-900 px-6 py-2 rounded-md font-medium hover:bg-violet-600 dark:hover:bg-violet-800 transition-all hover:cursor-pointer"
-          >
-            Register Now
-          </a>
+        
         </div>
       </div>
     </section>
