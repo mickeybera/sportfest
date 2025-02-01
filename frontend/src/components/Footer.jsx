@@ -9,7 +9,7 @@ function Footer() {
 
         {/* Left Section */}
         <div className="mb-6 md:mb-0 text-center md:text-left">
-          <h3 className="text-2xl font-bold uppercase">🏆 SportFest<span className='text-violet-600'>2K25</span></h3>
+          <h3 className="text-2xl font-bold uppercase">🏆 Kreedakriti<span style={{ color: 'var(--color-custom)' }}>2K25</span></h3>
           <p className="text-sm mt-2">Uniting Athletes, Celebrating Victories!</p>
         </div>
 

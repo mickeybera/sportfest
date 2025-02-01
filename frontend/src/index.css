@@ -7,7 +7,9 @@
 body {
     @apply bg-white text-gray-900; /* Default Light Mode */
 }
-
+:root{
+  --color-custom : #E57B11;
+}
 body.dark {
     @apply bg-gray-900 text-white; /* Dark Mode */
 }

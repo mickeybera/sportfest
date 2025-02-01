@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { FaSun, FaMoon, FaBars, FaTimes } from 'react-icons/fa';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
-import college from '../../public/college.jpg';
+import college from '../../public/logo.png';
 
 function Navbar() {
     const [darkMode, setDarkMode] = useState(false);
@@ -56,18 +56,18 @@ function Navbar() {
         >
             <div className='flex justify-between items-center max-w-7xl mx-auto'>
                 {/* Logo */}
-                <div className='ml-2 flex gap-2'>
+                <div className='ml-2 flex gap-2 items-center'>
                     <a href="https://gcelt.gov.in/" target='_blank' rel="noopener noreferrer">
                         <img
                             src={college}
-                            width={50}
+                            width={80}
                             height={10}
                             alt='College Logo'
                             className={`object-contain ${darkMode ? 'invert' : ''} sm:ml-1`}
                         />
                     </a>
                     <h1 className='mt-2 font-bold text-2xl md:text-3xl cursor-pointer'>
-                        Kreeda<span className='text-violet-800 dark:text-violet-400'>kriti</span>
+                        Kreeda<span className='dark:text-violet-400' style={{ color: 'var(--color-custom)' }}>kriti</span>
                     </h1>
                 </div>
 
@@ -85,7 +85,7 @@ function Navbar() {
                             </Link>
                         </li>
                         {/* Gallery Dropdown */}
-                        <li className='relative'>
+                        <li className='relative bottom-1'>
                             <button
                                 onClick={() => setGalleryDropdownOpen(!galleryDropdownOpen)}
                                 className='px-3 py-1 hover:border-2 hover:border-violet-600 hover:rounded-md transition-all'
