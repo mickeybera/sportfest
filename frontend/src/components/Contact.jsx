@@ -8,7 +8,6 @@ function ContactForm() {
     {name: "Riyazul Islam", number: 8617825294},
     {name: "Tapas Nayak", number: 7479285397},
     {name: "Puspendu Pandey", number: 7319152523},
-    {name: "Arpan Bera", number: 9732760714},
     {name: "Nabakumar Mahata", number: 7679747410},
  ];
     return (
