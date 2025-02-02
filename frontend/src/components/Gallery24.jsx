@@ -7,9 +7,9 @@ const galleryImages = [
     { id: 4, src: '/mix double badminton 2k24.JPG', alt: 'Badminton Mix Double 2k24' },
     { id: 5, src: '/badminton double 2k24.JPG', alt: 'Badminton Double 2k24' },
     { id: 6, src: '/auction cricket opening cerimony 2k24.JPG', alt: 'Auction Cricket Opening Cerimony 2k24' },
-    {id: 7, src:'/chess 2k24.JPG', alt:'Chess 2k24'},
-    {id: 8, src:'/carrom 2k24.JPG', alt:'Carrom 2k24'},
-    {id: 9, src:'/yearly volley 2k24.JPG',alt:'Yearly Volley 2k24'}
+    { id: 7, src: '/chess 2k24.JPG', alt: 'Chess 2k24' },
+    { id: 8, src: '/carrom 2k24.JPG', alt: 'Carrom 2k24' },
+    { id: 9, src: '/yearly volley 2k24.JPG', alt: 'Yearly Volley 2k24' }
 ];
 
 function Gallery24() {
@@ -27,7 +27,7 @@ function Gallery24() {
         <section className='py-10 bg-white dark:bg-gray-900'>
             <div className='container mx-auto px-4'>
                 <h2 className='mt-10 text-3xl md:text-4xl font-bold text-center mb-6 text-violet-600'>
-                    📸 Sport Fest Gallery
+                    📸 Kreedakriti Gallery 2k24
                 </h2>
                 <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6'>
                     {galleryImages.map((image) => (
@@ -63,6 +63,15 @@ function Gallery24() {
                             className='w-auto max-h-[80vh] object-contain rounded-lg shadow-lg'
                         />
                         <p className='text-center mt-4 text-white text-lg'>{selectedImage.alt}</p>
+                        <div className='text-center mt-4'>
+                            <a
+                                href={selectedImage.src}
+                                download
+                                className='px-4 py-2 bg-violet-600 text-white rounded-md hover:bg-violet-700 transition-colors duration-300'
+                            >
+                                Download
+                            </a>
+                        </div>
                     </div>
                 </div>
             )}
@@ -71,3 +80,4 @@ function Gallery24() {
 }
 
 export default Gallery24;
+
