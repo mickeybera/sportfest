@@ -51,8 +51,8 @@ function Carousel() {
         <>
             <div className='h-auto overflow-x-hidden'>
                 {/* Header */}
-                <h2 className='mt-3 text-center text-2xl md:text-3xl font-bold mb-6 text-violet-600'>
-                    Welcome to Kreedakriti 2<span className='text-violet-600'>k</span>2<span className='text-violet-600'>5</span>
+                <h2 className='mt-3 text-center text-2xl md:text-3xl font-bold mb-6 text-orange-600'>
+                    Welcome to Kreedakriti 2<span className='text-orange-600'>k</span>2<span className='text-orange-600'>5</span>
                 </h2>
 
                 <div className='ml-1 mr-4 py-3 w-full lg:w-3/3 mt-5 px-2 md:px-4 sm:mr-4'>
@@ -92,12 +92,12 @@ function Carousel() {
                             backDelay={1000}
                             startDelay={500}
                             loop
-                            className="text-center text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-violet-600 mb-6"
+                            className="text-center text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-orange-600 mb-6"
                         />
                     </div>
 
                     <p className='mt-5 ml-4 mr-4 text-base sm:text-lg md:text-xl leading-relaxed'>
-                        Welcome to <strong>SportFest 2k25</strong>,the most anticipated college sports festival of the year! This exciting event brings together athletes , sports enthusiasts, and students from all over to celebrate talent, teamwork, and sportsmanship. With a variety of competitive events ranging from track and field to team sports, SportFest 2k25 offers something for everyone. Whether you're an aspiring athlete looking to showcase your skills or a fan cheering on your peers, this festival is the perfect platform to make memories, build camaraderie, and push your limits. Join us for a vibrant, action-packed celebration of sportsmanship, enthusiasm, and team spirit as we make <strong>SportFest 2k25</strong> the best one yet! 🏆
+                        Welcome to <strong>Kreedakriti 2k25</strong>,the most anticipated college sports festival of the year! This exciting event brings together athletes , sports enthusiasts, and students from all over to celebrate talent, teamwork, and sportsmanship. With a variety of competitive events ranging from track and field to team sports, Kreedakriti 2k25 offers something for everyone. Whether you're an aspiring athlete looking to showcase your skills or a fan cheering on your peers, this festival is the perfect platform to make memories, build camaraderie, and push your limits. Join us for a vibrant, action-packed celebration of sportsmanship, enthusiasm, and team spirit as we make <strong>Kreedakriti 2k25</strong> the best one yet! 🏆
                     </p>
 
                     {/* Like Button */}
