@@ -2,11 +2,24 @@ import React, { useState } from 'react';
 import WinnerPopup from './WinnerPopup';
 import SchedulePopup from './SchedulePopup';
 import { CiCalendar } from "react-icons/ci";
-
+import { useAuth } from '../contexts/AuthContext';
+import { deleteDoc, doc } from 'firebase/firestore';
+import { db } from '../firebase';
+import {toast} from 'react-hot-toast';
 function EventsCard({ item }) {
   // State for Popups
   const [showWinnerPopup, setShowWinnerPopup] = useState(false);
   const [showSchedulePopup, setShowSchedulePopup] = useState(false);
+  const {currentUser} = useAuth();
+
+  const handleDelete = async (id) => {
+    try{
+      await deleteDoc(doc(db, 'games', id));
+      toast.success("Event Deleted Successfully");
+    }catch(err){
+      toast.error(err);
+    }
+  }
 
   // Winner Handlers
   const handleWinnerClick = () => setShowWinnerPopup(true);
@@ -32,14 +45,16 @@ function EventsCard({ item }) {
         {/* Description */}
         <p className="text-base text-gray-700 dark:text-gray-300 mb-4 flex items-center">
         <CiCalendar size={20}/>
-        {new Date(item.schedule).toLocaleDateString('en-US', {
+        {item.schedule ? 
+        (new Date(item.schedule).toLocaleDateString('en-US', {
             weekday: 'short',
             year: 'numeric',
             month: 'short',
             day: 'numeric',
             hour: '2-digit',
             minute: '2-digit'
-          })}
+          }))
+          : "Not schedule yet"}
         </p>
 
         {/* Buttons for Winner and Schedule */}
@@ -59,6 +74,12 @@ function EventsCard({ item }) {
           >
             Schedule
           </button>
+          {currentUser && <button
+            onClick={() => handleDelete(item.id)}
+            className="px-4 py-2 text-sm bg-red-600 text-white rounded-md hover:bg-red-700 transition-all duration-300 dark:bg-blue-400 dark:text-black dark:hover:bg-blue-500"
+          >
+            Delete
+          </button>}
         </div>
       </div>
 

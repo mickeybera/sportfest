@@ -128,7 +128,7 @@ function WinnerPopup({ item, onClose }) {
                   />
                 )}
                 <div className="text-gray-900 dark:text-gray-100 text-lg font-semibold">
-                  {winner.winnerName} <span className="text-sm font-normal">({winner.score})</span>
+                  {winner.winnerName} <span className="text-sm font-normal">({winner.score})</span><span className="text-sm font-normal ml-2">({winner.description})</span>
                 </div>
                 {currentUser && (
                   <div className="ml-auto flex gap-2">
