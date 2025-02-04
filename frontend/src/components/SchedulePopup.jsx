@@ -101,13 +101,13 @@ function SchedulePopup({ item, onClose }) {
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50 p-4 sm:p-6">
-      <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg w-full h-full max-w-full max-h-full overflow-y-auto lg:p-10">
-        <h2 className="text-xl sm:text-2xl font-bold mb-6 text-center">📅 Game Schedule</h2>
+      <div className="bg-white dark:bg-gray-900 p-6 rounded-lg shadow-lg w-full h-full max-w-full max-h-full overflow-y-auto lg:p-10">
+        <h2 className="text-xl sm:text-2xl font-bold mb-6 text-center text-gray-900 dark:text-gray-200">📅 Game Schedule</h2>
 
         <ul className="space-y-4 mb-6 text-gray-700 dark:text-gray-300 text-sm sm:text-base">
           {scheduleList.length > 0 ? (
             scheduleList.map((entry, index) => (
-              <li key={index} className="p-4 border-b border-gray-200 dark:border-gray-700 last:border-none bg-slate-100 rounded-lg">
+              <li key={index} className="p-4 border-b border-gray-300 dark:border-gray-700 last:border-none bg-gray-100 dark:bg-gray-800 rounded-lg">
                 <div className="flex items-center space-x-4">
                   {entry.participantImage && (
                     <img src={entry.participantImage} alt="Participant" className="w-14 h-14 rounded-full object-cover" />
@@ -127,13 +127,13 @@ function SchedulePopup({ item, onClose }) {
                   <div className="flex justify-end space-x-3 mt-3">
                     <button
                       onClick={() => handleEdit(index)}
-                      className="px-3 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition-all flex items-center gap-2 text-sm"
+                      className="px-3 py-2 bg-blue-500 dark:bg-blue-600 text-white rounded-md hover:bg-blue-600 dark:hover:bg-blue-700 transition-all flex items-center gap-2 text-sm"
                     >
                       <FaEdit size={14} /> Edit
                     </button>
                     <button
                       onClick={() => handleDelete(index)}
-                      className="px-3 py-2 bg-red-500 text-white rounded-md hover:bg-red-600 transition-all flex items-center gap-2 text-sm"
+                      className="px-3 py-2 bg-red-500 dark:bg-red-600 text-white rounded-md hover:bg-red-600 dark:hover:bg-red-700 transition-all flex items-center gap-2 text-sm"
                     >
                       <FaTrash size={14} /> Delete
                     </button>
@@ -142,28 +142,26 @@ function SchedulePopup({ item, onClose }) {
               </li>
             ))
           ) : (
-            <li className="text-center">Not scheduled yet!</li>
+            <li className="text-center text-gray-900 dark:text-gray-300">Not scheduled yet!</li>
           )}
         </ul>
 
         {currentUser && (
           <>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <input type="date" name="date" value={scheduleData.date} onChange={handleChange} className="w-full px-3 py-2 border rounded-md" />
-              <input type="time" name="time" value={scheduleData.time} onChange={handleChange} className="w-full px-3 py-2 border rounded-md" />
-              <input type="text" name="participants" value={scheduleData.participants} onChange={handleChange} placeholder="Participants" className="w-full px-3 py-2 border rounded-md" />
-              <input type="text" name="opponent" value={scheduleData.opponent} onChange={handleChange} placeholder="Opponent" className="w-full px-3 py-2 border rounded-md" />
+              <input type="date" name="date" value={scheduleData.date} onChange={handleChange} className="w-full px-3 py-2 border rounded-md dark:bg-gray-800 dark:text-gray-300" />
+              <input type="time" name="time" value={scheduleData.time} onChange={handleChange} className="w-full px-3 py-2 border rounded-md dark:bg-gray-800 dark:text-gray-300" />
+              <input type="text" name="participants" value={scheduleData.participants} onChange={handleChange} placeholder="Participants" className="w-full px-3 py-2 border rounded-md dark:bg-gray-800 dark:text-gray-300" />
+              <input type="text" name="opponent" value={scheduleData.opponent} onChange={handleChange} placeholder="Opponent" className="w-full px-3 py-2 border rounded-md dark:bg-gray-800 dark:text-gray-300" />
             </div>
-            <textarea name="description" value={scheduleData.description} onChange={handleChange} placeholder="Description" rows="3" className="w-full px-3 py-2 border rounded-md my-4 resize-none" />
-            <input type="file" onChange={handleImageChange} className="w-full px-3 py-2 border rounded-md" />
-            {imageFile && <img src={URL.createObjectURL(imageFile)} alt="Preview" className="w-24 h-24 rounded-full object-cover mx-auto mt-2" />}
-            <button onClick={handleSubmit} className="w-full px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700 transition-all mt-4">
+            <textarea name="description" value={scheduleData.description} onChange={handleChange} placeholder="Description" rows="3" className="w-full px-3 py-2 border rounded-md my-4 resize-none dark:bg-gray-800 dark:text-gray-300" />
+            <button onClick={handleSubmit} className="w-full px-4 py-2 bg-green-600 dark:bg-green-700 text-white rounded-md hover:bg-green-700 dark:hover:bg-green-800 transition-all mt-4">
               {editingIndex !== null ? 'Update Schedule' : 'Add Schedule'}
             </button>
           </>
         )}
 
-        <button onClick={onClose} className="w-full px-4 py-2 bg-red-600 text-white rounded-md hover:bg-red-700 transition-all mt-4">
+        <button onClick={onClose} className="w-full px-4 py-2 bg-red-600 dark:bg-red-700 text-white rounded-md hover:bg-red-700 dark:hover:bg-red-800 transition-all mt-4">
           Close
         </button>
       </div>
