@@ -13,11 +13,13 @@ function WinnerPopup({ item, onClose }) {
     description: '',
   });
 
-  const [winners, setWinners] = useState(Array.isArray(item.winners) ? item.winners : []);
+  const [winners, setWinners] = useState([]);
   const [editingIndex, setEditingIndex] = useState(null);
   const { currentUser } = useAuth();
 
   useEffect(() => {
+    if (!item?.id) return;
+
     const fetchWinners = async () => {
       try {
         const docRef = doc(db, 'games', item.id);
@@ -33,31 +35,22 @@ function WinnerPopup({ item, onClose }) {
     };
 
     fetchWinners();
-  }, [item.id]);
+  }, [item?.id]);
 
   // Image upload function
   const handleImageUpload = async (e) => {
-    const file = e.target.files[0]; // Get the selected file
+    const file = e.target.files[0];
     if (!file) return;
-
-    // Check file type (only accept jpg, jpeg, and png images)
-    const allowedTypes = ['image/jpeg', 'image/png'];
-    if (!allowedTypes.includes(file.type)) {
-      toast.error('Please upload a valid image file (JPEG/PNG).');
-      return;
-    }
 
     const storageRef = ref(storage, `winner-profile-pics/${file.name}`);
 
     try {
-      const snapshot = await uploadBytes(storageRef, file); // Upload to Firebase
-      const url = await getDownloadURL(snapshot.ref); // Get the download URL
-
-      console.log("Uploaded Image URL:", url); // Debugging
+      const snapshot = await uploadBytes(storageRef, file);
+      const url = await getDownloadURL(snapshot.ref);
 
       setNewWinner((prev) => ({
         ...prev,
-        profilePic: url, // Store the URL
+        profilePic: url,
       }));
 
       toast.success('Profile picture uploaded successfully!');
@@ -73,31 +66,33 @@ function WinnerPopup({ item, onClose }) {
       toast.error('Please enter both winner name and score');
       return;
     }
-
-    // Ensure description is included in the winner data
-    const updatedWinners = [...winners];
+  
+    // Ensure winners is an array before modifying it
+    const updatedWinners = Array.isArray(winners) ? [...winners] : [];
+  
     if (editingIndex !== null) {
-      updatedWinners[editingIndex] = newWinner; // Update with the description
+      updatedWinners[editingIndex] = { ...newWinner };
     } else {
-      updatedWinners.push(newWinner); // Add the description
+      updatedWinners.push({ ...newWinner });
     }
-
+  
     try {
       const docRef = doc(db, 'games', item.id);
       await updateDoc(docRef, { winners: updatedWinners });
-
+  
       setWinners(updatedWinners);
-      setNewWinner({ winnerName: '', score: '', profilePic: '', description: '' }); // Reset the form with description cleared
+      setNewWinner({ winnerName: '', score: '', profilePic: '', description: '' });
       setEditingIndex(null);
-
+  
       toast.success(editingIndex !== null ? 'Winner updated successfully!' : 'Winner added successfully!');
     } catch (error) {
       console.error('Error updating winners:', error);
       toast.error('Failed to update winners. Please try again.');
     }
   };
+  
 
-  // Delete a winner from the list
+  // Delete a winner
   const handleDeleteWinner = async (index) => {
     const updatedWinners = winners.filter((_, i) => i !== index);
     try {
@@ -111,9 +106,9 @@ function WinnerPopup({ item, onClose }) {
     }
   };
 
-  // Edit an existing winner
+  // Edit a winner
   const handleEditWinner = (index) => {
-    setNewWinner(winners[index]);
+    setNewWinner({ ...winners[index] });
     setEditingIndex(index);
   };
 
@@ -131,10 +126,12 @@ function WinnerPopup({ item, onClose }) {
                     src={winner.profilePic}
                     alt="Winner"
                     className="w-8 h-8 rounded-full border border-gray-600 object-cover"
+                    onError={(e) => (e.target.style.display = 'none')}
                   />
                 )}
                 <div className="text-gray-900 dark:text-gray-100 text-lg font-semibold">
                   {winner.winnerName} <span className="text-sm font-normal">({winner.score})</span>
+                  <span className="text-sm font-normal ml-2">({winner.description})</span>
                 </div>
                 {currentUser && (
                   <div className="ml-auto flex gap-2">
@@ -164,20 +161,20 @@ function WinnerPopup({ item, onClose }) {
             <input
               type="text"
               value={newWinner.winnerName}
-              onChange={(e) => setNewWinner({ ...newWinner, winnerName: e.target.value })}
+              onChange={(e) => setNewWinner((prev) => ({ ...prev, winnerName: e.target.value }))}
               placeholder="Enter winner's name"
               className="p-2 border rounded-md dark:bg-gray-700 dark:text-white"
             />
             <input
               type="text"
               value={newWinner.score}
-              onChange={(e) => setNewWinner({ ...newWinner, score: e.target.value })}
+              onChange={(e) => setNewWinner((prev) => ({ ...prev, score: e.target.value }))}
               placeholder="Enter winner's score"
               className="p-2 border rounded-md dark:bg-gray-700 dark:text-white"
             />
             <textarea
               value={newWinner.description}
-              onChange={(e) => setNewWinner({ ...newWinner, description: e.target.value })}
+              onChange={(e) => setNewWinner((prev) => ({ ...prev, description: e.target.value }))}
               placeholder="Enter winner's description"
               className="p-2 border rounded-md dark:bg-gray-700 dark:text-white"
               rows="3"
@@ -197,10 +194,7 @@ function WinnerPopup({ item, onClose }) {
           </div>
         )}
 
-        <button
-          onClick={onClose}
-          className="w-full p-2 bg-red-600 hover:bg-red-700 text-white rounded-md"
-        >
+        <button onClick={onClose} className="w-full p-2 bg-red-600 hover:bg-red-700 text-white rounded-md">
           Close
         </button>
       </div>

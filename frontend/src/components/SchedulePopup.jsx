@@ -106,6 +106,7 @@ function SchedulePopup({ item, onClose }) {
 
         <ul className="space-y-4 mb-6 text-gray-700 dark:text-gray-300 text-sm sm:text-base">
           {scheduleList.length > 0 ? (
+            Array.isArray(scheduleList) &&
             scheduleList.map((entry, index) => (
               <li key={index} className="p-4 border-b border-gray-300 dark:border-gray-700 last:border-none bg-gray-100 dark:bg-gray-800 rounded-lg">
                 <div className="flex items-center space-x-4">

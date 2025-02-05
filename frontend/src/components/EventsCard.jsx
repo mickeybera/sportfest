@@ -76,7 +76,7 @@ function EventsCard({ item }) {
           </button>
           {currentUser && <button
             onClick={() => handleDelete(item.id)}
-            className="px-4 py-2 text-sm bg-red-600 text-white rounded-md hover:bg-red-700 transition-all duration-300 dark:bg-red-600 dark:text-black dark:hover:bg-red-700"
+            className="px-4 py-2 text-sm bg-red-600 text-white rounded-md hover:bg-red-700 transition-all duration-300 dark:bg-blue-400 dark:text-black dark:hover:bg-blue-500"
           >
             Delete
           </button>}
