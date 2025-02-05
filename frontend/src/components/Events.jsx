@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import list from '../../public/list.json';
 import EventsCard from './EventsCard';
-
+import toast from "react-hot-toast"
 function Events() {
   const [events, setEvents] = useState(list);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -20,7 +20,7 @@ function Events() {
       const updatedEvents = events.filter((event) => event.id !== id);
       setEvents(updatedEvents);
     } else {
-      alert('You must be logged in to delete an event!');
+      toast.success('You must be logged in to delete an event!');
     }
   };
 

@@ -40,12 +40,19 @@ function WinnerPopup({ item, onClose }) {
     const file = e.target.files[0]; // Get the selected file
     if (!file) return;
 
+    // Check file type (only accept jpg, jpeg, and png images)
+    const allowedTypes = ['image/jpeg', 'image/png'];
+    if (!allowedTypes.includes(file.type)) {
+      toast.error('Please upload a valid image file (JPEG/PNG).');
+      return;
+    }
+
     const storageRef = ref(storage, `winner-profile-pics/${file.name}`);
 
     try {
       const snapshot = await uploadBytes(storageRef, file); // Upload to Firebase
       const url = await getDownloadURL(snapshot.ref); // Get the download URL
-      
+
       console.log("Uploaded Image URL:", url); // Debugging
 
       setNewWinner((prev) => ({
@@ -124,7 +131,6 @@ function WinnerPopup({ item, onClose }) {
                     src={winner.profilePic}
                     alt="Winner"
                     className="w-8 h-8 rounded-full border border-gray-600 object-cover"
-                    onError={(e) => e.target.style.display = 'none'} // Hide broken images
                   />
                 )}
                 <div className="text-gray-900 dark:text-gray-100 text-lg font-semibold">
