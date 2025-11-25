@@ -43,7 +43,7 @@ function Footer() {
             </div>
             <div>
               <p className="text-sm">&copy; {new Date().getFullYear()} SportFest. All Rights Reserved.</p>
-              <p className="text-xs mt-1">Designed with ❤️ by SWA</p>
+              <p className="text-xs mt-1">Designed & Developed by Arpan Bera batch of 2026</p>
             </div>
           </div>
         </div>
